@@ -29,7 +29,7 @@ CleanNBAdata <- function(data, selectedYear, output){
 
 
 CleanNBAdata(NBAdata, "2000", "~/Info201/info201-final/nba-data/2000.csv")
-CleanNBAdata(NBAdata, "2001", "~/Info201/info201-final/nba-data/2001.csv")
+
 
 
 
