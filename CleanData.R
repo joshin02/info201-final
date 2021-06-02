@@ -57,7 +57,7 @@ CleanNBAdata(NBAdata20, "2020", "nba-data/2020.csv")
 
 ## function to merge all the data into one csv file
 combine <- function(output) {
-  combined <- bind_rows(NBAdata, NBAdata2, NBAdata3, NBAdata4, NBAdata5, NBAdata6, NBAdata7, 
+  combined <- bind_rows(NBAdata, NBAdata1, NBAdata2, NBAdata3, NBAdata4, NBAdata5, NBAdata6, NBAdata7, 
                         NBAdata8, NBAdata9, NBAdata10, NBAdata11, NBAdata12, NBAdata13, NBAdata14, 
                         NBAdata15, NBAdata16, NBAdata17, NBAdata18, NBAdata19, NBAdata20)
   write.csv(combined, output, row.names = FALSE)

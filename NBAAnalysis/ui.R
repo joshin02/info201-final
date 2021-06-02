@@ -2,23 +2,17 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
+    # title
+    titlePanel("3 Point Attempts/Percentage Through the Years"),
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
+    # widgets
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            
         ),
-
-        # Show a plot of the generated distribution
+        # show plot
         mainPanel(
-            plotOutput("distPlot")
+            plotOutput("bargraph")
         )
     )
 ))
