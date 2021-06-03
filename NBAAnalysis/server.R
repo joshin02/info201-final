@@ -11,6 +11,15 @@ nba <- data %>%
   select(year, avgAttempt, avgMade, avgPercent) %>% 
   unique()
 
+curry.effect <- data %>%
+  group_by(year < 2009) %>% 
+  mutate(shotsMade = sum(X3P)) %>% 
+  mutate(shotsAttempted = sum(X3PA)) %>% 
+  mutate(shotPercentage = shotsMade / shotsAttempted) %>% 
+  ungroup() %>% 
+  select(shotsMade, shotsAttempted, shotPercentage) %>% 
+  unique() %>% 
+  mutate(curry = c("before", "after"))
 
 shinyServer(function(input, output) {
     output$linegraph <- renderPlot({
@@ -32,5 +41,25 @@ shinyServer(function(input, output) {
              indicating that while players are shooting and making more shots, it doesn't necessarily indicate that
              they are getting better and more efficient at shooting 3 pointers.")
       
+    })
+    
+    filter <- reactive(
+      curry.effect %>% 
+        select(curry, input$type)
+    )
+    
+    output$graphOne <- renderPlot({
+      ggplot(filter(), aes_string(x = "curry", y = input$type)) +
+        geom_bar(stat="identity", color = "#005459") +
+        labs(x = "Before and After", y = "Made, Attempted, Percentage", title = "Before and After Stephen Curry joined the League")
+    })
+    
+    output$graphTwoDesc <- renderText ({
+      paste0("The bar graph attempts to show the effect Stephen Curry had on the evolution of the 3 point shot.
+             Looking at the the total shots made and attempted, the data shows that once Steph joined the league,
+             the amount of shots made and attempted almsot doubled. However, the shot percentage is very similar.
+             Looking at the data, we can't safely assume/conclude that Steph Curry was the sole factor in why
+             the usage of the 3 point shot has increased but it is a possibility. We can conclude that the shot 
+             percentage has not drastically improved as some fans might have thought.")
     })
 })

@@ -20,13 +20,27 @@ shinyUI(fluidPage(
                                                          choices = list("Average 3 point made" = "avgMade",
                                                                         "Average 3 point attempts" = "avgAttempt",
                                                                         "Average 3 point percentage" = "avgPercent"),
-                                                         selected = "Average 3 point attempts"),
+                                                         selected = "Average 3 point attempts")
                                          ),
                                          # show plot
                                          mainPanel(
                                              plotOutput("linegraph"),
                                              textOutput("sumGraph")
                                          )  
+                                     )
+                            ),
+                            tabPanel("Bar Graph", fluid = T,
+                                     sidebarLayout(
+                                         sidebarPanel(
+                                             radioButtons("type", label = "Select Stat", 
+                                                          choices = list("Shots Made" = "shotsMade",
+                                                                         "Shots Attempted" = "shotsAttempted",
+                                                                         "Shot Percentage" = "shotPercentage"))
+                                         ),
+                                         mainPanel(
+                                             plotOutput("graphOne"),
+                                             textOutput("graphTwoDesc")
+                                         )
                                      )
                             )
                         )
