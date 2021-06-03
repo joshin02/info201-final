@@ -1,7 +1,7 @@
 library(shiny)
 library(tidyverse)
 
-data <- read.csv("../nba-data/2000-20.csv")
+data <- read.csv("nba-data/2000-20.csv")
 
 nba <- data %>%
   group_by(year) %>%

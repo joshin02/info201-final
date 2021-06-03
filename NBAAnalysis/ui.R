@@ -5,8 +5,8 @@ library(shinythemes)
 shinyUI(fluidPage(
     navbarPage("NBA 3-Point Analysis", collapsible = TRUE, inverse = TRUE, theme = shinytheme("cosmo"),
                tabPanel("Home",
-                        includeHTML("../home.html"),
-                        includeCSS("../home.css")
+                        includeHTML("home.html"),
+                        includeCSS("home.css")
                ),
                tabPanel("Analysis",
                         # title
@@ -29,7 +29,7 @@ shinyUI(fluidPage(
                                          )  
                                      )
                             ),
-                            tabPanel("Bar Graph", fluid = T,
+                            tabPanel("Steph Curry Effect", fluid = T,
                                      sidebarLayout(
                                          sidebarPanel(
                                              radioButtons("type", label = "Select Stat", 
