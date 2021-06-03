@@ -64,6 +64,4 @@ combine <- function(output) {
 }
 
 combine("nba-data/2000-20.csv")
-
-
   

@@ -13,7 +13,7 @@ nba <- data %>%
 
 
 shinyServer(function(input, output) {
-    output$bargraph <- renderPlot({
+    output$linegraph <- renderPlot({
       ggplot(nba, aes_string(x = "year", y = input$yVar)) + 
         geom_line(color = "#17408b", size = 1.5) +
         geom_point(color = "#17408b", size = 4) +
@@ -22,7 +22,7 @@ shinyServer(function(input, output) {
               panel.background = element_blank(), axis.line = element_line(colour = "black")) +
         labs(x = "Year", y = "Average", title = "Average 3 point attempts/made/percentage in the NBA")
     })
-    
+
     output$sumGraph <- renderText ({
       paste0("The line graph above attempts to answer the question regarding if NBA players are shooting 
              and making more 3 pointers over the years. Looking at the average 3 point attempts and 3 point made, 
