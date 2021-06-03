@@ -5,8 +5,7 @@ library(shinythemes)
 shinyUI(fluidPage(
     navbarPage("NBA 3-Point Analysis", collapsible = TRUE, inverse = TRUE, theme = shinytheme("cosmo"),
                tabPanel("Home",
-                        includeHTML("../home.html"),
-                        includeCSS("../home.css")
+                        includeHTML("../home.html")
                ),
                tabPanel("Analysis",
                         # title
