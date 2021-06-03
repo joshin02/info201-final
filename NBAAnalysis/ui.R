@@ -42,6 +42,20 @@ shinyUI(fluidPage(
                                              textOutput("graphTwoDesc")
                                          )
                                      )
+                            ),
+                            tabPanel("3PT Shot by Position", fluid = T,
+                                     sidebarLayout(
+                                         sidebarPanel(
+                                             radioButtons("type2", label = "Select Stat", 
+                                                          choices = list("Shots Made" = "madeShots",
+                                                                         "Shots Attempted" = "shotAttempts",
+                                                                         "Shot Percentage" = "percentage"))
+                                         ),
+                                         mainPanel(
+                                             plotOutput("mulitline"),
+                                             textOutput("sumMultiline")
+                                         )
+                                     )
                             )
                         )
                 )

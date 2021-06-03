@@ -21,6 +21,16 @@ curry.effect <- data %>%
   unique() %>% 
   mutate(curry = c("before", "after"))
 
+pos <- data %>% 
+  group_by(year, Pos) %>% 
+  mutate(madeShots = sum(X3P)) %>% 
+  mutate(shotAttempts = sum(X3PA)) %>% 
+  mutate(percentage = madeShots / shotAttempts) %>% 
+  mutate(percentage = round(percentage, digits = 2)) %>% 
+  select(Pos, year, madeShots, shotAttempts, percentage) %>% 
+  filter(Pos == "PG" || Pos == "SG" || Pos == "SF" || Pos == "PF" || Pos == "C") %>% 
+  unique()
+
 shinyServer(function(input, output) {
     output$linegraph <- renderPlot({
       ggplot(nba, aes_string(x = "year", y = input$yVar)) + 
@@ -61,5 +71,27 @@ shinyServer(function(input, output) {
              Looking at the data, we can't safely assume/conclude that Steph Curry was the sole factor in why
              the usage of the 3 point shot has increased but it is a possibility. We can conclude that the shot 
              percentage has not drastically improved as some fans might have thought.")
+    })
+    
+    pos.filter <- reactive(
+      pos %>% 
+        select(Pos, year, input$type2)
+    )
+    
+    output$mulitline <- renderPlot({
+      ggplot(pos.filter(), aes_string(x = "year", y = input$type2, color = "Pos")) +
+        geom_line() +
+        geom_point() +
+        scale_x_continuous(breaks = seq(2000, 2020, by = 1)) +
+        labs(x = "year", y = "Made, Attempted, Percentage", title = "3PT Shot by Position")
+    })
+    
+    output$sumMultiline <- renderText({
+      paste0("The multiline graph shows the 3PT evolution based on position. Just like
+             our other 2 graphs, there is a increasing trend over the years in 3PT shots
+             made and attempted while the percentage seems to be very inconsistent and
+             no real pattern to be seen. Some interesting points on the dataset include
+             the Center position and their inconsistency when it comes to shooting the
+             3.")
     })
 })
