@@ -6,7 +6,7 @@ shinyUI(fluidPage(
     titlePanel("NBA 3-Point Success Throughout the Years"),
     # widgets
     tabsetPanel(
-        tabPanel("1", fluid = T,
+        tabPanel("Line Graph", fluid = T,
                  sidebarLayout(
                      sidebarPanel(
                          selectInput("yVar", label = "Type of Data",
@@ -17,7 +17,8 @@ shinyUI(fluidPage(
                      ),
                      # show plot
                      mainPanel(
-                         plotOutput("bargraph")
+                         plotOutput("bargraph"),
+                         textOutput("sumGraph")
                      )  
                  )
         ),
