@@ -3,8 +3,7 @@ library(shiny)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
     # title
-    titlePanel("3 Point Attempts/Percentage Through the Years"),
-
+    titlePanel("NBA 3-Point Success Throughout the Years"),
     # widgets
     tabsetPanel(
         tabPanel("1", fluid = T,
@@ -15,7 +14,6 @@ shinyUI(fluidPage(
                                                     "Average 3 point attempts" = "avgAttempt",
                                                     "Average 3 point percentage" = "avgPercent"),
                                      selected = "Average 3 point attempts"),
-                         
                      ),
                      # show plot
                      mainPanel(
@@ -23,10 +21,7 @@ shinyUI(fluidPage(
                      )  
                  )
         ),
-        
         tabPanel("2", fluid = T)
         
     ),
-    
-   
 ))
