@@ -69,7 +69,8 @@ shinyServer(function(input, output) {
   ## graph 2 showing 3PT stats before and after Curry entered the league
   output$graphOne <- renderPlot({
     ggplot(filter(), aes_string(x = "curry", y = input$type)) +
-      geom_bar(stat="identity", color = "#005459") +
+      geom_bar(stat="identity", width=0.5, fill="steelblue") +
+      geom_text(aes_string(label=input$type), vjust=1.6, color="white", size=3.5) +
       labs(x = "Before and After", y = "Made, Attempted, Percentage", title = "Before and After Stephen Curry joined the League")
   })
     
