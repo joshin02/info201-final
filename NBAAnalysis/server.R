@@ -77,7 +77,7 @@ shinyServer(function(input, output) {
   output$graphTwoDesc <- renderText ({
     paste0("The bar graph attempts to show the effect Stephen Curry had on the evolution of the 3 point shot.
            Looking at the the total shots made and attempted, the data shows that once Steph joined the league,
-           the amount of shots made and attempted almsot doubled. However, the shot percentage is very similar.
+           the amount of shots made and attempted almost doubled. However, the shot percentage is very similar.
            Looking at the data, we can't safely assume/conclude that Steph Curry was the sole factor in why
            the usage of the 3 point shot has increased but it is a possibility. We can conclude that the shot 
            percentage has not drastically improved as some fans might have thought.")
