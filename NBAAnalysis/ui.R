@@ -58,6 +58,9 @@ shinyUI(fluidPage(
                                      )
                             )
                         )
+                ),
+                tabPanel("Summary",
+                         includeMarkdown("summary.md")
                 )
     )
 ))
